@@ -5,8 +5,9 @@ import scipy.linalg as sla
 
 inFile = open('Матрицы100.txt', 'r', encoding='utf8')
 answers = []
-dets = []
+x = []
 n = 0
+k = 1
 print("Введите точность:")
 eps = float(input())
 A = []
@@ -20,7 +21,8 @@ for line in inFile:
         A.append(line)
         if len(A) == n:
             A = np.array(A)
-            dets.append(sla.det(A))
+            x.append(k)
+            k = k + 1
             # создадим случайный вектор соответсвующей размерности:
             b = np.random.rand(A.shape[0])
             lamb = 0
@@ -39,5 +41,5 @@ for line in inFile:
                 b = b1 / b1_norm
             answers.append(lamb)
 inFile.close()
-plt.plot(dets, answers, "bo")
+plt.plot(x, answers)
 plt.show()
