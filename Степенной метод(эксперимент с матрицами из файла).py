@@ -41,5 +41,5 @@ for line in inFile:
                 b = b1 / b1_norm
             answers.append(lamb)
 inFile.close()
-plt.plot(x, answers)
+plt.plot(x, sorted(answers))
 plt.show()
